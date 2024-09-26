@@ -11,12 +11,13 @@
     - [Create a new file](#create-a-new-file)
     - [Submit a solution](#submit-a-solution)
     - [Track submission status](#track-submission-status)
+    - [More help](#more-help)
 4. [Customization Guide](#customization-guide)
     - [Change author](#change-author)
     - [Edit code templates](#edit-code-templates)
 
 ## Introduction
-ACMOJ CLI is an unofficial command line interface utility designed to interact with the Shanghai Jiao Tong University (SJTU) ACM Online Judge (ACMOJ). It provides an easy and convenient way to perform problem submissions and track submission statuses from the command line, without needing to open your browser. The tool also allows you to manage source file templates with standardized comment sections containing metadata about the problem and author.
+ACMOJ CLI is an unofficial command line interface utility designed to interact with the Shanghai Jiao Tong University (SJTU) [ACM Online Judge (ACMOJ)](https://acm.sjtu.edu.cn/OnlineJudge/). It provides an easy and convenient way to perform problem submissions and track submission statuses from the command line, without needing to open your browser. The tool also allows you to manage source file templates with standardized comment sections containing metadata about the problem and author.
 
 The main features of `acmoj` include:
 - Seamless problem submission to the ACMOJ platform.
@@ -66,6 +67,7 @@ This step ensures that you can call the `acmoj` command from anywhere in your te
 ```bash
 mkdir -p ~/.local/bin
 ln -s ~/.config/acmoj/acmoj.py ~/.local/bin/acmoj
+chmod +x ~/.local/bin/acmoj
 ```
 
 #### 4. Add `~/.local/bin` to the `PATH`
@@ -157,6 +159,26 @@ Provide the submission ID explicitly if you want to see a past submission's stat
 
 ```bash
 acmoj status <submission_id>
+```
+
+### More help
+
+For more information on the available commands and their usage, run:
+
+```bash
+acmoj -h
+```
+
+To get help on a specific command, use:
+
+```bash
+acmoj <command> -h
+```
+
+Example:
+
+```bash
+acmoj submit -h
 ```
 
 ## Customization Guide
