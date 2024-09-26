@@ -194,14 +194,20 @@ class ACMOJ_helper:
 		return "登出" in self.session.get(validate_url, cookies={"acmoj-session": login_cookie}).text
 
 	def store_login_cookie(self, login_cookie):
-		with open(self.login_cookie_path, "w") as f:
-			f.write(login_cookie)
+		try:
+			with open(self.login_cookie_path, "w") as f:
+				f.write(login_cookie)
+		except Exception as e:
+			print("Error: Failed to store login cookie:", e)
 
 	def login(self, username = "", log=True):
 		login_cookie = self.login_cookie
-		if login_cookie is None:
-			with open(self.login_cookie_path, "r") as f:
-				login_cookie = f.read()
+		if login_cookie is None and os.path.exists(self.login_cookie_path):
+			try:
+				with open(self.login_cookie_path, "r") as f:
+					login_cookie = f.read()
+			except Exception as e:
+				print("Error: Failed to read login cookie:", e)
 		if not self.validate_login_cookie(login_cookie):
 			if log:
 				print("Login cookie is invalid. Getting a new one...")
